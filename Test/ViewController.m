@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
+@property (nonatomic, strong) UILabel *descLabel;
+
 @end
 
 @implementation ViewController
@@ -27,6 +29,8 @@
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     CGFloat height = [UIScreen mainScreen].bounds.size.height;
     self.titleLabel.frame = CGRectMake(0, (height-100)*0.5, width, 100);
+    
+    self.descLabel.frame = CGRectMake(0, CGRectGetMaxY(_titleLabel.frame)+50, width, 100);
 }
 
 - (UILabel *)titleLabel {
@@ -41,5 +45,17 @@
     return _titleLabel;
 }
 
+- (UILabel *)descLabel {
+    if (!_descLabel) {
+        _descLabel = [[UILabel alloc] init];
+        _descLabel = [[UILabel alloc] init];
+        _descLabel.text = @"这是一部分需要更新的内容";
+        _descLabel.textColor = [UIColor redColor];
+        _descLabel.font = [UIFont systemFontOfSize:18];
+        _descLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:_descLabel];
+    }
+    return _descLabel;
+}
 
 @end
